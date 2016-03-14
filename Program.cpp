@@ -12,7 +12,7 @@ string linia()
 
 int main()
 {
-//#ifdef _DEBUG
+#ifdef _DEBUG
 	cout << "Test konstruktorow komputera" << endl;
 	cout << linia();
 	Komputer test1;
@@ -77,6 +77,36 @@ int main()
 	cout << linia() << "Test operatora +=" << endl;
 	test7 += test8;
 	cout << test7;
+	cout << linia() << "Test operatora *" << endl;
+	test8 = test6 * test7;
+	cout << test8;
+	cout << linia() << "Test operatora *=" << endl << linia();
+	Komputer test9[2];
+	test9[0] *= test9[1];
+	cout << linia();
+	cout << test9[0];
+	cin.get();
+	system("cls");
+	cout << linia() << "Test operatora -" << endl;
+	Komputer test10[3];
+	test10[0] = test10[1] - test10[2];
+	cout << test10[0] << linia();
+	cout << "Test operatora -=" << endl;
+	Komputer test11[2];
+	test11[0] -= test11[1];
+	cout << linia() << test11[0] << linia();
+	cout << "Test operatora ++ (obiekt test12 [wydajnosc domyslna == 5])" << endl;
+	Komputer test12;
+	test12++;
+	cout << linia() << test12 << linia();
+	cout << "Test operatora -- (dalej obiekt test12)" << endl;
+	test12--;
+	cout << test12 << linia();
+	cin.get();
+	system("cls");
+	cout << linia() << endl << endl;
+	cout << "Liczba stworzonych obiektow: " << Komputer::wyswietLiczbeObiektow() << endl << linia() << endl << endl;
+#endif
     return 0;
 }
 

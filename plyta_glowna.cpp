@@ -21,6 +21,7 @@ Plyta_glowna::~Plyta_glowna()
 {
 #ifdef _DEBUG
 	cout << "Wywolano destruktor Plyta_glowna" << endl;
+	cout << "----------------------------------" << endl;
 #endif
 }
 
