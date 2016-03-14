@@ -1,36 +1,82 @@
 #include <iostream>
 #include <string>
 #include "komputer.h"
+//#include "vld.h"
 
 using namespace std;
 
+string linia()
+{
+	return "---------------------------------- \n";
+}
+
 int main()
 {
-	/*cout << "Test Plyta glowna: " << endl;
-	cout << "----------------------------------" << endl;
-	Plyta_glowna test;
-	test.wyswietlParametry_PlytaGlowna();
-	test.pelnaNazwa();
-	cout << "----------------------------------" << endl;
+//#ifdef _DEBUG
+	cout << "Test konstruktorow komputera" << endl;
+	cout << linia();
+	Komputer test1;
+	Komputer test2(3.43);
+	Komputer test3(2015, 8192, 2, 5.66, 2149.99);
+	cout << linia();
+	cout << "Komputer test1: " << endl << test1 << linia();
+	cout << "Komputer test2: " << endl << test2 << linia();
+	cout << "Komputer test3: " << endl << test3 << linia();
 	cin.get();
 	system("cls");
-	cout << "----------------------------------" << endl;
-	test.zmienCene(2343.12);
-	test.wyswietlParametry_PlytaGlowna();
-	test.pelnaNazwa();
-	cout << "----------------------------------" << endl;
+	cout << "Test metod Komputera" << endl;
+	cout << linia();
+	Komputer test4;
+	cout << linia();
+	cout << "Oryginalny obiekt test4: " << endl << test4 << linia();
+	test4.zmienRam(1024);
+	cout << "Metoda zmienRam: " << endl << test4 << linia();
+	test4.zmienRokProdukcji(2020);
+	cout << "Metoda zmienRokProdukcji: " << endl << test4 << linia();
+	test4.zmienWydajnosc(3.32);
+	cout << "Metoda zmienWydajnosc: " << endl << test4 << linia();
+	cout << "Metoda wyswietlWydajnosc: " << endl;
+	test4.wyswietlWydajnosc();
 	cin.get();
 	system("cls");
-	cout << "----------------------------------" << endl;
-	USB *test2;
-	test2 = new USB;
-	test2->wyswietlParametryUSB();
-	test2->zmienTechnologieUSB("3.0");
-	test2->wyswietlParametryUSB();
-	delete test2;
-	cout << "----------------------------------" << endl;*/
-#ifdef _DEBUG
-
+	cout << "Test operatorow" << endl << linia() << endl;
+	Komputer test5[2];
+	cout << "Test operatora <<" << endl << linia();
+	cout << test5[0] << linia();
+	cout << "Test operatora <" << endl;
+	test5[0].zmienWydajnosc(3.55);
+	if (test5[0] < test5[1])
+		cout << "Obiekt test5[0] jest mniejszy od obiektu test5[1]" << endl;
+	else
+		cout << "Obiekt test5[1] jest mniejszy od obiektu test5[1]" << endl;
+	cout << linia() << "Test operatora >" << endl;
+	if (test5[0] > test5[1])
+		cout << "Obiekt test5[0] jest wiekszy od obiektu test5[1]" << endl;
+	else
+		cout << "Obiekt test5[0] jest mniejszy od obiektu test5[1]" << endl;
+	cout << linia() << "Test operatora ==" << endl;
+	if (test5[0] == test5[1])
+		cout << "Obiekt test5[0] jest rowny test5[1]" << endl;
+	else
+		cout << "Obiekty test5[0] i test5[1] nie sa rowne" << endl;
+	cout << linia() << "Test operatora = (test5[0]=test5[1])" << endl;
+	test5[0].zmienRam(4500);
+	test5[0] = test5[1];
+	cout << "Obiekt test5[1]: " << endl << test5[1] << endl;
+	cout << "Obiekt test5[0]: " << endl << test5[0];
+	cin.get();
+	system("cls");
+	cout << "Test operatorow cd." << endl << linia();
+	Komputer test6(6.54);
+	Komputer test7(3.46);
+	Komputer test8;
+	cout << linia() << "Test operatora +" << endl;
+	test8 = test6 + test7;
+	cout << linia();
+	cout << test8;
+	cout << linia() << "Test operatora +=" << endl;
+	test7 += test8;
+	cout << test7;
     return 0;
 }
 

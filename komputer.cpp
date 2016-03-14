@@ -1,4 +1,4 @@
-	#include <iostream>
+#include <iostream>
 #include <string>
 #include "komputer.h"
 
@@ -11,6 +11,8 @@ Komputer::Komputer()
 #ifdef _DEBUG
 	cout << "Wywolano konstruktor domyslny Komputer" << endl;
 #endif
+	liczba_usb = 2;
+	usb = new USB[liczba_usb];
 	rok_produkcji = 2000;
 	ilosc_ram = 2048;
 	wydajnosc = 5.0;
@@ -24,11 +26,13 @@ Komputer::Komputer(double wydajnosc)
 #endif
 	rok_produkcji = 2000;
 	ilosc_ram = 2048;
+	liczba_usb = 2;
+	usb = new USB[liczba_usb];
 	this->wydajnosc = wydajnosc;
 	liczba_obiektow++;
 }
 
-Komputer::Komputer(int rok_produkcji, int ilosc_ram, double wydajnosc, double cena)
+Komputer::Komputer(int rok_produkcji, int ilosc_ram, int liczba_usb, double wydajnosc, double cena)
 {
 #ifdef _DEBUG
 	cout << "Wywolano konstruktor z parametrami: rok produkcji, ram, wydajnosc oraz cena" << endl;
@@ -37,6 +41,8 @@ Komputer::Komputer(int rok_produkcji, int ilosc_ram, double wydajnosc, double ce
 	this->ilosc_ram = ilosc_ram;
 	this->wydajnosc = wydajnosc;
 	this->cena = cena;
+	this->liczba_usb = liczba_usb;
+	usb = new USB[liczba_usb];
 	liczba_obiektow++;
 }
 
@@ -45,20 +51,24 @@ Komputer::~Komputer()
 #ifdef _DEBUG
 	cout << "Wywolano destruktor Komputer" << endl;
 #endif
+	if (usb != NULL)
+		delete []usb;
 	liczba_obiektow--;
 }
 
-Komputer::Komputer(const Komputer &komputer)
+Komputer::Komputer(const Komputer& komputer)
 {
 	plyta_glowna = komputer.plyta_glowna;
-	usb = new USB;
-	usb = komputer.usb;
 	procesor = komputer.procesor;
 	typ_komputera = komputer.typ_komputera;
 	rok_produkcji = komputer.rok_produkcji;
 	ilosc_ram = komputer.ilosc_ram;
 	wydajnosc = komputer.wydajnosc;
 	cena = komputer.cena;
+	liczba_usb = komputer.liczba_usb;
+	usb = new USB[liczba_usb];
+	for (int i = 0; i < liczba_usb; i++)
+		usb[i] = komputer.usb[i];
 }
 
 void Komputer::zmienRam(int ram)
@@ -83,7 +93,7 @@ void Komputer::wyswietlWydajnosc()
 
 ostream& operator<< (ostream &s, Komputer &k)
 {
-	s << "Rok produkcji: " << k.rok_produkcji << endl << "Ilosc RAM: " << k.ilosc_ram << endl << "Wydajnosc: " << k.wydajnosc << endl;
+	s << "Rok produkcji: " << k.rok_produkcji << endl << "Ilosc RAM: " << k.ilosc_ram << endl << "Wydajnosc: " << k.wydajnosc << endl << "Liczba USB: " << k.liczba_usb << endl;
 	return s;
 }
 
@@ -113,8 +123,6 @@ bool Komputer::operator== (const Komputer &komputer)
 
 Komputer& Komputer::operator = (const Komputer &komputer)
 {
-	plyta_glowna = komputer.plyta_glowna;
-	procesor = komputer.procesor;
 	typ_komputera = komputer.typ_komputera;
 	rok_produkcji = komputer.rok_produkcji;
 	ilosc_ram = komputer.ilosc_ram;
@@ -125,8 +133,8 @@ Komputer& Komputer::operator = (const Komputer &komputer)
 
 Komputer Komputer::operator + (const Komputer &komputer)
 {
-	Komputer suma;
-	suma.wydajnosc = wydajnosc + komputer.wydajnosc;
+	Komputer suma(0);
+	suma.wydajnosc = komputer.wydajnosc + wydajnosc;
 	return suma;
 }
 
@@ -172,4 +180,4 @@ Komputer& Komputer::operator -= (const Komputer &komputer)
 {
 	wydajnosc -= komputer.wydajnosc;
 	return *this;
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
