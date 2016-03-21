@@ -6,11 +6,11 @@ using namespace std;
 
 class USB {
 private:
-	string technologia_usb;
+	double technologia_usb;
 public:
 	USB();
-	USB(string technologia_usb);
+	USB(double technologia_usb);
 	~USB();
 	void wyswietlParametryUSB();
-	void zmienTechnologieUSB(string technologia_usb);
+	void zmienTechnologieUSB(double technologia_usb);
 };

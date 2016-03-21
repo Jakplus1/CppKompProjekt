@@ -12,7 +12,8 @@ string linia()
 
 int main()
 {
-#ifdef _DEBUG
+/*#ifdef _DEBUG
+	cout << "Program w trybie DEBUG" << endl;
 	cout << "Test konstruktorow komputera" << endl;
 	cout << linia();
 	Komputer test1;
@@ -106,7 +107,10 @@ int main()
 	system("cls");
 	cout << linia() << endl << endl;
 	cout << "Liczba stworzonych obiektow: " << Komputer::wyswietLiczbeObiektow() << endl << linia() << endl << endl;
-#endif
+#endif*/
+	Komputer o1;
+	o1.dodajUsb(5);
+	o1.wyswietlUsb();
     return 0;
 }
 

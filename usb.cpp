@@ -9,9 +9,9 @@ USB::USB()
 #ifdef _DEBUG
 	cout << "Wywolano konstruktor obiektu dynamicznego USB" << endl;
 #endif
-	technologia_usb = "2.0";
+	technologia_usb = 2.0;
 }
-USB::USB(string technologia_usb)
+USB::USB(double technologia_usb)
 {
 	this->technologia_usb = technologia_usb;
 }
@@ -21,7 +21,7 @@ void USB::wyswietlParametryUSB()
 	cout << "Technologia USB: " << technologia_usb << endl;
 }
 
-void USB::zmienTechnologieUSB(string technologia_usb)
+void USB::zmienTechnologieUSB(double technologia_usb)
 {
 	this->technologia_usb = technologia_usb;
 }

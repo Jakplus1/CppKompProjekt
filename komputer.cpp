@@ -11,8 +11,7 @@ Komputer::Komputer()
 #ifdef _DEBUG
 	cout << "Wywolano konstruktor domyslny Komputer" << endl;
 #endif
-	liczba_usb = 2;
-	usb = new USB[liczba_usb];
+	usb = NULL;
 	rok_produkcji = 2000;
 	ilosc_ram = 2048;
 	wydajnosc = 5.0;
@@ -24,10 +23,10 @@ Komputer::Komputer(double wydajnosc)
 #ifdef _DEBUG
 	cout << "Wywolano konstruktor z parametrem Wydajnosc" << endl;
 #endif
+	usb = NULL;
 	rok_produkcji = 2000;
 	ilosc_ram = 2048;
-	liczba_usb = 2;
-	usb = new USB[liczba_usb];
+	liczba_usb = 0;
 	this->wydajnosc = wydajnosc;
 	liczba_obiektow++;
 }
@@ -69,6 +68,24 @@ Komputer::Komputer(const Komputer& komputer)
 	usb = new USB[liczba_usb];
 	for (int i = 0; i < liczba_usb; i++)
 		usb[i] = komputer.usb[i];
+}
+
+void Komputer::wyswietlUsb()
+{
+		for (int i = 0; i < liczba_usb; i++)
+			usb[i].wyswietlParametryUSB();
+}
+
+void Komputer::dodajUsb(int liczba_usb)
+{
+	this->liczba_usb = liczba_usb;
+	usb = new USB[liczba_usb];
+	if (liczba_usb == 1)
+		cout << "Dodalem 1 port USB" << endl;
+	else if (liczba_usb > 1 && liczba_usb < 5)
+		cout << "Dodalem " << liczba_usb << " porty USB" << endl;
+	else
+		cout << "Dodalem " << liczba_usb << " portow USB" << endl;
 }
 
 void Komputer::zmienRam(int ram)
@@ -123,6 +140,10 @@ bool Komputer::operator== (const Komputer &komputer)
 
 Komputer& Komputer::operator = (const Komputer &komputer)
 {
+	plyta_glowna = komputer.plyta_glowna;
+	procesor = komputer.procesor;
+	usb = komputer.usb;
+	liczba_usb = komputer.liczba_usb;
 	typ_komputera = komputer.typ_komputera;
 	rok_produkcji = komputer.rok_produkcji;
 	ilosc_ram = komputer.ilosc_ram;
@@ -180,4 +201,4 @@ Komputer& Komputer::operator -= (const Komputer &komputer)
 {
 	wydajnosc -= komputer.wydajnosc;
 	return *this;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+}
