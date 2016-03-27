@@ -12,8 +12,9 @@ string linia()
 
 int main()
 {
-/*#ifdef _DEBUG
+#ifdef _DEBUG
 	cout << "Program w trybie DEBUG" << endl;
+#endif
 	cout << "Test konstruktorow komputera" << endl;
 	cout << linia();
 	Komputer test1;
@@ -38,6 +39,11 @@ int main()
 	cout << "Metoda zmienWydajnosc: " << endl << test4 << linia();
 	cout << "Metoda wyswietlWydajnosc: " << endl;
 	test4.wyswietlWydajnosc();
+	cout << linia();
+	cout << "Metoda dodajUsb oraz wyswietlUsb: " << endl;
+	Komputer testUSB;
+	testUSB.dodajUsb(10);
+	testUSB.wyswietlUsb();
 	cin.get();
 	system("cls");
 	cout << "Test operatorow" << endl << linia() << endl;
@@ -100,17 +106,23 @@ int main()
 	Komputer test12;
 	test12++;
 	cout << linia() << test12 << linia();
-	cout << "Test operatora -- (dalej obiekt test12)" << endl;
+	cout << "Test operatora -- (w dalszym ciagu wykorzystujemy obiekt test12)" << endl;
 	test12--;
 	cout << test12 << linia();
 	cin.get();
 	system("cls");
-	cout << linia() << endl << endl;
+	cout << "Test operatora []" << endl;
+	Komputer subTest;
+	for (int i = 0; i < 10; i++)
+		cout << subTest[i] << endl;
+	cout << linia() << endl;
+	cin.get();
+	system("cls");
+	cout << "Test operatora (double)" << endl;
+	Komputer testDouble;
+	double a = (double)testDouble;
+	cout << "(double) wskazuje na wydajnosc obiektu domyslnego testDouble: " << a << endl;
 	cout << "Liczba stworzonych obiektow: " << Komputer::wyswietLiczbeObiektow() << endl << linia() << endl << endl;
-#endif*/
-	Komputer o1;
-	o1.dodajUsb(5);
-	o1.wyswietlUsb();
     return 0;
 }
 

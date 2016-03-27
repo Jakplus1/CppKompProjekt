@@ -18,6 +18,7 @@ private:
 	double cena;
 	int liczba_usb;
 	USB *usb;
+	int test_operatora[10];
 public:
 	static int liczba_obiektow;
 	Komputer();
@@ -37,6 +38,8 @@ public:
 	bool operator < (const Komputer &komputer);
 	bool operator > (const Komputer &komputer);
 	bool operator == (const Komputer &komputer);
+	int &operator [] (int i);
+	operator double() const;
 	Komputer& operator = (const Komputer &komputer);	
 	Komputer operator + (const Komputer &komputer);
 	Komputer& operator += (const Komputer &komputer);

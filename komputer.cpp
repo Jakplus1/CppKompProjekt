@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <time.h>
 #include "komputer.h"
 
 using namespace std;
@@ -15,6 +16,9 @@ Komputer::Komputer()
 	rok_produkcji = 2000;
 	ilosc_ram = 2048;
 	wydajnosc = 5.0;
+	liczba_usb = 0;
+	for (int i = 0; i < 10; i++)
+		test_operatora[i] = rand() % 10;
 	liczba_obiektow++;
 }
 
@@ -65,9 +69,14 @@ Komputer::Komputer(const Komputer& komputer)
 	wydajnosc = komputer.wydajnosc;
 	cena = komputer.cena;
 	liczba_usb = komputer.liczba_usb;
-	usb = new USB[liczba_usb];
-	for (int i = 0; i < liczba_usb; i++)
-		usb[i] = komputer.usb[i];
+	if (liczba_usb != 0)
+	{
+		usb = new USB[liczba_usb];
+		for (int i = 0; i < liczba_usb; i++)
+			usb[i] = komputer.usb[i];
+	}
+	else
+		usb = NULL;
 }
 
 void Komputer::wyswietlUsb()
@@ -201,4 +210,17 @@ Komputer& Komputer::operator -= (const Komputer &komputer)
 {
 	wydajnosc -= komputer.wydajnosc;
 	return *this;
+}
+
+int& Komputer::operator [] (int i)
+{
+	if (i > 10)
+		cout << "Nie ma takiego elementu tablicy!" << endl;
+	else
+		return test_operatora[i];
+}
+
+Komputer::operator double() const
+{
+	return wydajnosc;
 }
