@@ -43,7 +43,7 @@ int main()
 	cout << "Metoda dodajUsb oraz wyswietlUsb: " << endl;
 	Komputer testUSB;
 	testUSB.dodajUsb(10);
-	testUSB.wyswietlUsb();
+	cout << testUSB.wyswietlUsb();
 	cin.get();
 	system("cls");
 	cout << "Test operatorow" << endl << linia() << endl;

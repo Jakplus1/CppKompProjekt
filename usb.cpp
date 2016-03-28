@@ -16,9 +16,10 @@ USB::USB(double technologia_usb)
 	this->technologia_usb = technologia_usb;
 }
 
-void USB::wyswietlParametryUSB()
+string USB::wyswietlParametryUSB()
 {
-	cout << "Technologia USB: " << technologia_usb << endl;
+	string s = to_string(technologia_usb);
+	return "Technologia USB: " + s + "\n";
 }
 
 void USB::zmienTechnologieUSB(double technologia_usb)

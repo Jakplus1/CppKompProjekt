@@ -79,10 +79,12 @@ Komputer::Komputer(const Komputer& komputer)
 		usb = NULL;
 }
 
-void Komputer::wyswietlUsb()
+string Komputer::wyswietlUsb()
 {
-		for (int i = 0; i < liczba_usb; i++)
-			usb[i].wyswietlParametryUSB();
+	string s;
+	for (int i = 0; i < liczba_usb; i++)
+		s+=usb[i].wyswietlParametryUSB();
+	return s;
 }
 
 void Komputer::dodajUsb(int liczba_usb)
@@ -119,7 +121,7 @@ void Komputer::wyswietlWydajnosc()
 
 ostream& operator<< (ostream &s, Komputer &k)
 {
-	s << "Rok produkcji: " << k.rok_produkcji << endl << "Ilosc RAM: " << k.ilosc_ram << endl << "Wydajnosc: " << k.wydajnosc << endl << "Liczba USB: " << k.liczba_usb << endl;
+	s << "Rok produkcji: " << k.rok_produkcji << endl << "Ilosc RAM: " << k.ilosc_ram << endl << "Wydajnosc: " << k.wydajnosc << endl << "Liczba USB: " << k.liczba_usb << endl << k.wyswietlUsb() << endl;
 	return s;
 }
 

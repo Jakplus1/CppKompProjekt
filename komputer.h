@@ -31,7 +31,7 @@ public:
 	void zmienWydajnosc(double wydajnosc);
 	void wyswietlWydajnosc();
 	void dodajUsb(int liczba_usb);
-	void wyswietlUsb();
+	string wyswietlUsb();
 	static int wyswietLiczbeObiektow() { return liczba_obiektow; };
 
 	friend ostream& operator<< (ostream &s, Komputer &k);

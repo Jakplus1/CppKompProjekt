@@ -11,6 +11,6 @@ public:
 	USB();
 	USB(double technologia_usb);
 	~USB();
-	void wyswietlParametryUSB();
+	string wyswietlParametryUSB();
 	void zmienTechnologieUSB(double technologia_usb);
 };
